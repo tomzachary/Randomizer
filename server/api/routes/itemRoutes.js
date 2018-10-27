@@ -1,11 +1,16 @@
 'use strict'
-import todoList from '../controllers/itemController';
+import item from '../controllers/itemController';
 
 module.exports = function(app) {
 
   //item Routes
   
   app.route('/createItem')
-  .get(todoList.create_item);
+  .get(item.create_item)
+  .post(item.post_item)
 
+
+  //magicItem
+  app.route('/createMagic')
+  .post(item.create_magic);
 };

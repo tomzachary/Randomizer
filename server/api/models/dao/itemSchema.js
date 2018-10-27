@@ -30,11 +30,11 @@ var ItemSchema = new Schema({
         required: "damage is Required"
     },
     modifier: {
-        type: number,
+        type: Number,
         required: "modifier is Required"
     },
     powerPoints: {
-        type: number,
+        type: Number,
         required: "powerPoints is required"
     },
     properties: {
@@ -128,23 +128,23 @@ var ItemQuirkSchema = new Schema({
 });
 
 //Item Magic Level
-var ItemMagicBonus = new Schema({
+var ItemMagicBonusSchema = new Schema({
     name: {
         type: String,
         required: "name is Required"
     },
     modifier: {
-        type: number,
+        type: Number,
         required: "modifier is Required"
     },
     powerPoints: {
-        type: number,
+        type: Number,
         required: "powerPoints is required"
     }
 });
 
 //Base Item
-var ItemBase = new Schema({
+var ItemBaseSchema = new Schema({
     name: {
         type: String,
         required: "name is Required"
@@ -166,14 +166,15 @@ var ItemBase = new Schema({
         required: "damage is Required"
     },
     modifier: {
-        type: number,
+        type: Number,
         required: "modifier is Required"
     },
     powerPoints: {
-        type: number,
+        type: Number,
         required: "powerPoints is required"
     }
 });
 
 
-module.exports = mongoose.model('Items', TaskSchema);
+module.exports = mongoose.model('Items', ItemBaseSchema);
+module.exports = mongoose.model('ItemMagicBonus', ItemMagicBonusSchema);

@@ -1,4 +1,4 @@
-module.exports = function(){
-    var name;
-    var properties;
+module.exports = class{
+    name = "";
+
 }

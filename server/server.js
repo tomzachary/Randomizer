@@ -1,9 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Task from './api/models/todoListModel';
+import Item from './api/models/dao/itemSchema';
+import ItemMagicBonus from './api/models/dao/itemSchema';
+
 import bodyParser from 'body-parser';
 import taskroutes from './api/routes/todoListRoutes';
-import itemRoutes from './api/routes/itemRoutes'
+import itemRoutes from './api/routes/itemRoutes';
 var app = express();
 //define port if no port given in env file
 var port = process.env.PORT || 3000;
@@ -18,6 +21,7 @@ app.use(bodyParser.json());
 //Register routes
 taskroutes(app);
 itemRoutes(app);
+
 //Add error handling middleware
 app.use(function(req, res){
     res.status(404).send({url: req.originalUrl + " not found"})
