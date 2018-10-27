@@ -14,8 +14,8 @@ class App extends Component {
   }
 
   handleClick() {
-    axios.get('https://api.github.com/users/TomWasHere')
-    .then(response => this.setState({username: response.data.name}))
+    axios.get('http://96.42.71.31:3000/createItem')
+    .then(response => this.setState({username: JSON.stringify(response.data)}))
   }
 
   render() {
@@ -29,3 +29,16 @@ class App extends Component {
 }
 
 export default App;
+
+
+// {
+//   "_id": "5bd4cb4d3ddf2c42a0f612cf",
+//   "name": "Magic Fists",
+//   "description": "Some random weapon",
+//   "property": "finesse",
+//   "damage": "1d6 piercing",
+//   "weight": "5 lbs",
+//   "modifier": 2,
+//   "powerPoints": 1,
+//   "__v": 0
+// }
