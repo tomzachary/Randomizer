@@ -18,6 +18,13 @@ mongoose.connect('mongodb://localhost/Tododb');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+//allow CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 //Register routes
 taskroutes(app);
 itemRoutes(app);

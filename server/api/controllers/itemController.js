@@ -21,8 +21,7 @@ exports.create_item = function(req, res){
         var index = Math.floor(Math.random() * genericItems.length);
 
         var dbItem = genericItems[index];
-        Item.name = dbItem.name;
-
+        item = dbItem;
         res.json(item);
     });
   
