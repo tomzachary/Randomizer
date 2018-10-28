@@ -1,13 +1,12 @@
 
 import Item from '../models/item';
-var ItemSchema = mongoose.model('Items');
-import mongoose from 'mongoose';
+import ItemDll from '../dll/itemDll';
 
 exports.createItem = async function(req){
      var item = new Item();
      var genericItems;
      //Get default
-     genericItems = await test();
+     genericItems = await ItemDll.getAllItems();
     
          //genericItems = item;
          var index = Math.floor(Math.random() * genericItems.length);
@@ -16,6 +15,3 @@ exports.createItem = async function(req){
          item = dbItem;
          return item;
 };
-var test = async function(){
-    return await ItemSchema.find({});
-}
