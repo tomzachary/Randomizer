@@ -9,13 +9,23 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      rarityEnum: ''
     }
   }
 
   handleClick() {
-    axios.get('http://96.42.71.31:3000/createItem')
-    .then(response => this.setState({username: JSON.stringify(response.data)}))
+    var requestURL = '/src/config/items.json';
+    var request = new XMLHttpRequest();
+    request.onload = function() {
+      console.log(request.response);
+    };
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+
+    // axios.get('http://96.42.71.31:3000/createItem')
+    // .then(response => this.setState({username: JSON.stringify(response.data)}))
   }
 
   render() {

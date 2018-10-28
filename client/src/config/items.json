@@ -1,0 +1,3 @@
+{
+    "rarity": [{"name":"Common","text":"The crappy items"},{"name":"Uncommon","text":"The less crappy items"},{"name":"Rare","text":"The first acceptable tier of items"},{"name":"Very Rare","text":"Items that are actually good"},{"name":"Legendary","text":"Items for a god"}]
+}
