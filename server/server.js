@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import Task from './api/models/todoListModel';
-import Item from './api/models/dao/itemSchema';
-import ItemMagicBonus from './api/models/dao/itemSchema';
+import Task from './models/todoListModel';
+import Item from './models/dao/itemSchema';
+import ItemMagicBonus from './models/dao/itemSchema';
 
 import bodyParser from 'body-parser';
 import taskroutes from './api/routes/todoListRoutes';
