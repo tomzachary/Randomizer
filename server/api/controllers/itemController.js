@@ -1,32 +1,12 @@
 'use strict'
 
 import mongoose from 'mongoose';
-import Item from '../models/item';
+import ItemBll from '../../bll/itemBll';
 var ItemSchema = mongoose.model('Items');
 var MagicSchema = mongoose.model('ItemMagicBonus')
-// exports.list_all_tasks = function(req, res) {
-//   Task.find({}, function(err, task) {
-//     if (err)
-//       res.send(err);
-//     res.json(task);
-//   });
-// };
 
-exports.create_item = function(req, res){
-    var item = new Item();
-    var genericItems;
-    var rarity = req.query.rarity;
-    //Get default
-    ItemSchema.find({}, function(err, item){
-        genericItems = item;
-        var index = Math.floor(Math.random() * genericItems.length);
-
-        var dbItem = genericItems[index];
-        Item.name = dbItem.name;
-
-        res.json(item);
-    });
-  
+exports.create_item = async function(req, res){
+  res.json( await ItemBll.createItem(req));
 }
 exports.post_item = function(req, res) {
     var new_item = new ItemSchema(req.body);
