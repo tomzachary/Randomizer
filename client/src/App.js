@@ -1,42 +1,55 @@
 import React, { Component } from 'react';
 import './App.css';
+import Data from './config/items.json'
 
 import axios from 'axios'
 
 class App extends Component {
-  constructor () {
-    super();
-    this.handleClick = this.handleClick.bind(this);
 
-    this.state = {
-      username: '',
-      rarityEnum: ''
+    constructor () {
+      super();
+      this.handleClick = this.handleClick.bind(this);
+
+      this.state = {
+        items: [],
+        selectedItem: '',
+        createdItem: ''
+      }
     }
+
+  componentDidMount() {
+      let items = Data.rarity.map(item => { 
+          console.log(JSON.stringify(item));
+          return {value: item.value, display: item.display} 
+      });
+      this.setState({ items: [{value: '', display: '(Select any rarities)'}].concat(items) });
   }
 
   handleClick() {
-    var requestURL = '/src/config/items.json';
-    var request = new XMLHttpRequest();
-    request.onload = function() {
-      console.log(request.response);
-    };
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-
-    // axios.get('http://96.42.71.31:3000/createItem')
-    // .then(response => this.setState({username: JSON.stringify(response.data)}))
+    this.setState({username: JSON.stringify(Data)})
+    axios.get('http://96.42.71.31:3000/createItem?' + this.state.selectedItem.toLocaleLowerCase())
+    .then(response => this.setState({createdItem: JSON.stringify(response.data)}))
+  
   }
 
   render() {
     return (
-      <div className='button_container'>
-        <button className='button' onClick={this.handleClick}>Click Me</button>
-        <p>{this.state.username}</p>
+      <div>
+        <div className='button_container'>
+          <button className='button' onClick={this.handleClick}>Click Me</button>
+          <p>{this.state.createdItem}</p>
+        </div>
+        <div>
+          <select value={this.state.selectedItem} 
+                  onChange={(e) => this.setState({selectedItem: e.target.value})}>
+            {this.state.items.map((item) => <option key={item.value} value={item.value}>{item.display}</option>)}
+          </select>
+        </div>
       </div>
-    );
+    )
   }
 }
+
 
 export default App;
 

@@ -1,3 +1,3 @@
 {
-    "rarity": [{"name":"Common","text":"The crappy items"},{"name":"Uncommon","text":"The less crappy items"},{"name":"Rare","text":"The first acceptable tier of items"},{"name":"Very Rare","text":"Items that are actually good"},{"name":"Legendary","text":"Items for a god"}]
+    "rarity": [{"value":"Common","display":"The crappy items"},{"value":"Uncommon","display":"The less crappy items"},{"value":"Rare","display":"The first acceptable tier of items"},{"value":"Very Rare","display":"Items that are actually good"},{"value":"Legendary","display":"Items for a god"}]
 }

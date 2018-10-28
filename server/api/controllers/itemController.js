@@ -15,6 +15,7 @@ var MagicSchema = mongoose.model('ItemMagicBonus')
 exports.create_item = function(req, res){
     var item = new Item();
     var genericItems;
+    var rarity = req.query.rarity;
     //Get default
     ItemSchema.find({}, function(err, item){
         genericItems = item;
